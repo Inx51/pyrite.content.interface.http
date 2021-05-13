@@ -1,9 +1,7 @@
-name: '$(versionNumber)'
-
+name: '{Set by script}'
 trigger:
 - master
 - releases/*
-
 variables:
   versionMajor: 0
   versionMinor: 1
@@ -16,13 +14,12 @@ variables:
   isRelease: $[eq(variables['Build.SourceBranch'], 'refs/heads/release/*')]
   vmImage: 'windows-latest'
   buildConfiguration: 'Release'
-
 stages:
   - stage: Build
     displayName: Build stage
     jobs:
       - job: Build
-        displayName: Build version $(versionNumber)
+        displayName: 'Build'
         pool:
           vmImage: $(vmImage)
         steps:
@@ -34,31 +31,29 @@ stages:
               [string] $buildName = "$(versionNumber)"
               Write-Host "Setting the name of the build to '$buildName'."
               Write-Host "##vso[build.updatebuildnumber]$buildName"
-
-        - script: |
-            dotnet restore
-          workingDirectory: '$(sourceDir)'
-          displayName: 'dotnet restore'
-          failOnStderr: True
-
+        - task: DotNetCoreCLI@2
+          displayName: dotnet restore
+          inputs:
+            projects: '$(sourceDir)/*.sln'
+            command: restore
+            feedsToUse: 'select'
+            vstsFeed: 'Pyrite/Development'
+            includeNuGetOrg: true
         - script: |
             dotnet build --configuration $(buildConfiguration) /p:Version=$(versionNumber)
           workingDirectory: '$(sourceDir)'
           displayName: 'dotnet build'
           failOnStderr: True
-
         - script: |
             dotnet test --filter TestCategory=UnitTest --configuration $(buildConfiguration) --collect "Code coverage"
           workingDirectory: '$(Build.SourcesDirectory)/src'
           displayName: 'dotnet test'
           failOnStderr: True
-
         - script: |
             dotnet pack --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) -p:Version=$(versionNumber) -p:PackageVersion=$(versionNumber)
           workingDirectory: '$(sourceDir)'
           displayName: 'dotnet pack'
           failOnStderr: True
-
         - task: PublishBuildArtifacts@1
           displayName: 'publish artifact'
           inputs:
@@ -73,6 +68,7 @@ stages:
         pool:
           vmImage: $(vmImage)
         steps:
+        - checkout: none
         - task: DownloadPipelineArtifact@2
           displayName: Download build artifact
           inputs:
@@ -92,6 +88,7 @@ stages:
         pool:
           vmImage: $(vmImage)
         steps:
+        - checkout: none
         - task: PowerShell@2
           displayName: 'Not yet implemented error'
           inputs:
