@@ -4,7 +4,7 @@ using Moq;
 using Pyrite.Content.Interface.Http;
 using Pyrite.Content.Interface.Http.Interfaces;
 using Pyrite.Content.Interface.Http.Interfaces.Factories;
-using Pyrite.Content.Test.Constants;
+using Pyrite.Content.Interface.Http.Test.Constants;
 using System.Threading.Tasks;
 
 namespace Pyrite.Content.UnitTest

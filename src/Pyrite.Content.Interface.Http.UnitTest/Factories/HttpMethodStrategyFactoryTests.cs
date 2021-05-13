@@ -3,7 +3,7 @@ using Moq;
 using Pyrite.Content.Abstractions.Interfaces.Repositories;
 using Pyrite.Content.Interface.Http.Factories;
 using Pyrite.Content.Interface.Http.HttpMethodStrategies;
-using Pyrite.Content.Test.Constants;
+using Pyrite.Content.Interface.Http.Test.Constants;
 
 namespace Pyrite.Content.Interface.Http.UnitTest.Factories
 {

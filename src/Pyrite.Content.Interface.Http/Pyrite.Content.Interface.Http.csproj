@@ -6,11 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Pyrite.Content.Abstractions\Pyrite.Content.Abstractions.csproj" />
-    <ProjectReference Include="..\Pyrite.Content.Core\Pyrite.Content.Core.csproj" />
+    <PackageReference Include="Pyrite.Content.Abstractions" Version="0.1.0.26" />
   </ItemGroup>
 
 </Project>

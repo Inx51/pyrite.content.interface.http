@@ -16,10 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pyrite.Content.Core\Pyrite.Content.Core.csproj" />
+    <ProjectReference Include="..\Pyrite.Content.Interface.Http.Test\Pyrite.Content.Interface.Http.Test.csproj" />
     <ProjectReference Include="..\Pyrite.Content.Interface.Http\Pyrite.Content.Interface.Http.csproj" />
-    <ProjectReference Include="..\Pyrite.Content.Repository.Memory\Pyrite.Content.Repository.Memory.csproj" />
-    <ProjectReference Include="..\Pyrite.Content.Test\Pyrite.Content.Test.csproj" />
   </ItemGroup>
 
 </Project>
