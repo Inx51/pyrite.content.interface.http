@@ -1,0 +1,100 @@
+name: '$(versionNumber)'
+
+trigger:
+- master
+- releases/*
+
+variables:
+  versionMajor: 0
+  versionMinor: 1
+  versionPatch: 0
+  versionMajorMinorPatch: '$(versionMajor).$(versionMinor).$(versionPatch)'
+  versionRevision: $[counter(variables['versionMajorMinorPatch'], 0)]
+  versionNumber: '$(versionMajorMinorPatch).$(versionRevision)'
+  sourceDir: '$(Build.SourcesDirectory)/src'
+  isDevelopment: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
+  isRelease: $[eq(variables['Build.SourceBranch'], 'refs/heads/release/*')]
+  vmImage: 'windows-latest'
+  buildConfiguration: 'Release'
+
+stages:
+  - stage: Build
+    displayName: Build stage
+    jobs:
+      - job: Build
+        displayName: Build version $(versionNumber)
+        pool:
+          vmImage: $(vmImage)
+        steps:
+        - task: PowerShell@2
+          displayName: Set the name of the build
+          inputs:
+            targetType: 'inline'
+            script: |
+              [string] $buildName = "$(versionNumber)"
+              Write-Host "Setting the name of the build to '$buildName'."
+              Write-Host "##vso[build.updatebuildnumber]$buildName"
+
+        - script: |
+            dotnet restore
+          workingDirectory: '$(sourceDir)'
+          displayName: 'dotnet restore'
+          failOnStderr: True
+
+        - script: |
+            dotnet build --configuration $(buildConfiguration) /p:Version=$(versionNumber)
+          workingDirectory: '$(sourceDir)'
+          displayName: 'dotnet build'
+          failOnStderr: True
+
+        - script: |
+            dotnet test --filter TestCategory=UnitTest --configuration $(buildConfiguration) --collect "Code coverage"
+          workingDirectory: '$(Build.SourcesDirectory)/src'
+          displayName: 'dotnet test'
+          failOnStderr: True
+
+        - script: |
+            dotnet pack --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) -p:Version=$(versionNumber) -p:PackageVersion=$(versionNumber)
+          workingDirectory: '$(sourceDir)'
+          displayName: 'dotnet pack'
+          failOnStderr: True
+
+        - task: PublishBuildArtifacts@1
+          displayName: 'publish artifact'
+          inputs:
+            pathToPublish: $(Build.ArtifactStagingDirectory)
+            artifactName: artifact
+  - stage: Deploy
+    displayName: Deploy stage
+    jobs:
+      - job: Deploy_development
+        displayName: Deploy to development feed
+        condition: eq(variables.isDevelopment, true)
+        pool:
+          vmImage: $(vmImage)
+        steps:
+        - task: DownloadPipelineArtifact@2
+          displayName: Download build artifact
+          inputs:
+            buildType: 'current'
+            artifactName: 'artifact'
+            targetPath: '$(Pipeline.Workspace)'
+        - task: DotNetCoreCLI@2
+          displayName: Push packages to Development feed
+          inputs:
+            command: 'push'
+            packagesToPush: '$(Pipeline.Workspace)/*.nupkg'
+            nuGetFeedType: 'internal'
+            publishVstsFeed: '6f28ef3e-8e78-4c64-b5d1-4c5573bc1c51/e46b9712-ba8f-425f-b100-b2f168bb98cc'
+      - job: Deploy_release
+        displayName: Deploy to release feed
+        condition: and(succeeded(), eq(variables.isRelease, true))
+        pool:
+          vmImage: $(vmImage)
+        steps:
+        - task: PowerShell@2
+          displayName: 'Not yet implemented error'
+          inputs:
+            targetType: 'inline'
+            script: |      
+              Write-Error "Deploy to release is not yet implemented"
