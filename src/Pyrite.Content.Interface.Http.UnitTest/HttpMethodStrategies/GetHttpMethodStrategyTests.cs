@@ -25,6 +25,7 @@ namespace Pyrite.Content.HttpMethodStrategies.UnitTest
             httpContext.Request.Host = new HostString("test.pyrite");
             httpContext.Request.Path = new PathString("/jsonresources/person/1");
             httpContext.Request.Method = "GET";
+            httpContext.Response.Body = new MemoryStream();
 
             var resourceRepositoryMock = new Mock<IResourceRepository>();
             resourceRepositoryMock.Setup(m => m.ExistsAsync(httpContext.Request.Path))
