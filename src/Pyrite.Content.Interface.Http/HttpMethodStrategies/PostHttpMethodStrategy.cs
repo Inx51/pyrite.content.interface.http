@@ -35,16 +35,6 @@ namespace Pyrite.Content.Interface.Http.HttpMethodStrategies
 
             httpContext.Response.StatusCode = 201;
             httpContext.Response.Headers.Add("Location", $"{httpContext.Request.Scheme}://{httpContext.Request.Host}{httpContext.Request.Path}");
-
-            //httpContext.Response.OnStarting
-            //(
-            //    () =>
-            //    {
-            //        httpContext.Response.StatusCode = 201;
-            //        httpContext.Response.Headers.Add("Location", $"{httpContext.Request.Scheme}://{httpContext.Request.Host}{httpContext.Request.Path}");
-            //        return Task.CompletedTask;
-            //    }
-            //);
         }
     }
 }

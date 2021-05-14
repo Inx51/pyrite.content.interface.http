@@ -8,11 +8,11 @@ namespace Pyrite.Content.Interface.Http.Factories
 {
     public class HttpMethodStrategyFactory : IHttpMethodStrategyFactory
     {
-        private Dictionary<string, IHttpMethodStrategy> _httpMethodStraegyContainer;
+        private Dictionary<string, IHttpMethodStrategy> _httpMethodStrategyContainer;
 
         public HttpMethodStrategyFactory(IResourceRepository resourceRepository)
         {
-            this._httpMethodStraegyContainer = new Dictionary<string, IHttpMethodStrategy>
+            this._httpMethodStrategyContainer = new Dictionary<string, IHttpMethodStrategy>
             {
                 ["GET"] = new GetHttpMethodStrategy(resourceRepository),
                 ["HEAD"] = new HeadHttpMethodStrategy(resourceRepository),
@@ -24,10 +24,10 @@ namespace Pyrite.Content.Interface.Http.Factories
 
         public IHttpMethodStrategy Create(string method)
         {
-            if (!this._httpMethodStraegyContainer.ContainsKey(method))
+            if (!this._httpMethodStrategyContainer.ContainsKey(method))
                 return null;
 
-            return this._httpMethodStraegyContainer[method];
+            return this._httpMethodStrategyContainer[method];
         }
     }
 }

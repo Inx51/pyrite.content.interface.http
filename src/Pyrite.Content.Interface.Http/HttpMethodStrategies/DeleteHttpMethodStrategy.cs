@@ -16,18 +16,15 @@ namespace Pyrite.Content.Interface.Http.HttpMethodStrategies
 
         public async Task ExecuteAsync(HttpContext httpContext)
         {
-            if (httpContext.Request.Method == "DELETE")
+            if (!await this._resourceRepository.ExistsAsync(httpContext.Request.Path))
             {
-                if (!await this._resourceRepository.ExistsAsync(httpContext.Request.Path))
-                {
-                    httpContext.Response.StatusCode = 404;
-                    return;
-                }
-
-                await this._resourceRepository.DeleteAsync(httpContext.Request.Path);
-
-                httpContext.Response.StatusCode = 204;
+                httpContext.Response.StatusCode = 404;
+                return;
             }
+
+            await this._resourceRepository.DeleteAsync(httpContext.Request.Path);
+
+            httpContext.Response.StatusCode = 204;
         }
     }
 }
