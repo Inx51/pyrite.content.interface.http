@@ -20,7 +20,7 @@ namespace Pyrite.Content.Interface.Http
             this._route = route;
         }
 
-        public async Task InvokeAsync
+        public virtual async Task InvokeAsync
         (
             HttpContext context,
             IHttpMethodStrategyFactory httpMethodStrategyFactory

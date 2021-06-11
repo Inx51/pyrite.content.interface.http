@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Pyrite.Content.Abstractions.Interfaces.Repositories;
 using Pyrite.Content.Interface.Http.Factories;
@@ -21,7 +22,7 @@ namespace Pyrite.Content.Interface.Http.UnitTest.Factories
             var httpMethodStrategy = httpMethodStrategyFactory.Create("GET");
 
             //assert
-            Assert.IsInstanceOfType(httpMethodStrategy, typeof(GetHttpMethodStrategy));
+            httpMethodStrategy.Should().BeOfType(typeof(GetHttpMethodStrategy));
         }
 
         [TestMethod]
@@ -35,7 +36,7 @@ namespace Pyrite.Content.Interface.Http.UnitTest.Factories
             var httpMethodStrategy = httpMethodStrategyFactory.Create("POST");
 
             //assert
-            Assert.IsInstanceOfType(httpMethodStrategy, typeof(PostHttpMethodStrategy));
+            httpMethodStrategy.Should().BeOfType(typeof(PostHttpMethodStrategy));
         }
 
         [TestMethod]
@@ -49,7 +50,7 @@ namespace Pyrite.Content.Interface.Http.UnitTest.Factories
             var httpMethodStrategy = httpMethodStrategyFactory.Create("HEAD");
 
             //assert
-            Assert.IsInstanceOfType(httpMethodStrategy, typeof(HeadHttpMethodStrategy));
+            httpMethodStrategy.Should().BeOfType(typeof(HeadHttpMethodStrategy));
         }
 
         [TestMethod]
@@ -63,7 +64,7 @@ namespace Pyrite.Content.Interface.Http.UnitTest.Factories
             var httpMethodStrategy = httpMethodStrategyFactory.Create("PUT");
 
             //assert
-            Assert.IsInstanceOfType(httpMethodStrategy, typeof(PutHttpMethodStrategy));
+            httpMethodStrategy.Should().BeOfType(typeof(PutHttpMethodStrategy));
         }
 
         [TestMethod]
@@ -77,7 +78,7 @@ namespace Pyrite.Content.Interface.Http.UnitTest.Factories
             var httpMethodStrategy = httpMethodStrategyFactory.Create("DELETE");
 
             //assert
-            Assert.IsInstanceOfType(httpMethodStrategy, typeof(DeleteHttpMethodStrategy));
+            httpMethodStrategy.Should().BeOfType(typeof(DeleteHttpMethodStrategy));
         }
 
         [TestMethod]
@@ -91,7 +92,7 @@ namespace Pyrite.Content.Interface.Http.UnitTest.Factories
             var httpMethodStrategy = httpMethodStrategyFactory.Create("THISISNOTANHTTPMETHOD");
 
             //assert
-            Assert.IsNull(httpMethodStrategy);
+            httpMethodStrategy.Should().BeNull();
         }
     }
 }

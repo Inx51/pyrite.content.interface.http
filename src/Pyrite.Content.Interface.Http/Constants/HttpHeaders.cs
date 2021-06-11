@@ -1,0 +1,52 @@
+﻿namespace Pyrite.Content.Interface.Http.Constants
+{
+    public static class HttpHeaders
+    {
+        public static readonly string[] RequestHeaders = new string[]
+        {
+            "A-IM",
+            "Accept",
+            "Accept-Charset",
+            "Accept-Datetime",
+            "Accept-Encoding",
+            "Accept-Language",
+            "Access-Control-Request-Method",
+            "Access-Control-Request-Headers",
+            "Authorization",
+            "Cookie",
+            "Expect",
+            "Forwarded",
+            "From",
+            "Host",
+            "HTTP2-Settings",
+            "If-Match",
+            "If-Modified-Since",
+            "If-None-Match",
+            "If-Range",
+            "If-Unmodified-Since",
+            "Max-Forwards",
+            "Origin",
+            "Proxy-Authorization",
+            "Range",
+            "Referer",
+            "TE",
+            "User-Agent",
+            "Upgrade-Insecure-Requests",
+            "X-Requested-With",
+            "DNT",
+            "X-Forwarded-For",
+            "X-Forwarded-Host",
+            "X-Forwarded-Proto",
+            "Front-End-Https",
+            "X-Http-Method-Override",
+            "X-ATT-DeviceId",
+            "X-Wap-Profile",
+            "Proxy-Connection",
+            "X-UIDH",
+            "X-Csrf-Token",
+            "X-Request-ID",
+            "X-Correlation-ID",
+            "Save-Data"
+        };
+    }
+}

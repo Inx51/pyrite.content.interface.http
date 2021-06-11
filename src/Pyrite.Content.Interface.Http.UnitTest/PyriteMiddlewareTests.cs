@@ -68,5 +68,42 @@ namespace Pyrite.Content.UnitTest
                 Times.Once
             );
         }
+
+        [TestMethod]
+        public async Task PyriteMiddleware_InvokeAsync_ShouldRunNextMiddlewareIfPathDoesntMatch()
+
+        {
+            //arrange
+            var httpMethod = "POST";
+            var httpContext = new DefaultHttpContext();
+            httpContext.Request.Scheme = "https";
+            httpContext.Request.Host = new HostString("test.pyrite");
+            httpContext.Request.Path = new PathString("/jsonresources/person/1");
+            httpContext.Request.Method = httpMethod;
+            var httpMethodStrategyMock = new Mock<IHttpMethodStrategy>();
+            var httpMethodStrategyFactoryMock = new Mock<IHttpMethodStrategyFactory>();
+            httpMethodStrategyFactoryMock.Setup(m => m.Create(httpMethod))
+                                         .Returns(httpMethodStrategyMock.Object);
+            var pyriteMiddleware = new PyriteHttpMiddleware
+            (
+                (innerContext) => Task.FromResult(0),
+                "test"
+            );
+
+            //act
+            await pyriteMiddleware.InvokeAsync
+            (
+                httpContext,
+                httpMethodStrategyFactoryMock.Object
+            );
+
+            //arrange
+            httpMethodStrategyMock.Verify
+            (
+                v =>
+                v.ExecuteAsync(httpContext),
+                Times.Never
+            );
+        }
     }
 }

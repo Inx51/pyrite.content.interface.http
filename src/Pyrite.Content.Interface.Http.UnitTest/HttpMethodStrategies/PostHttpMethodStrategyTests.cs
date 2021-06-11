@@ -1,3 +1,4 @@
+using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -37,8 +38,8 @@ namespace Pyrite.Content.HttpMethodStrategies.UnitTest
             await postHttpMethodStrategy.ExecuteAsync(httpContext);
 
             //assert
-            Assert.AreEqual(201, httpContext.Response.StatusCode);
-            Assert.AreEqual($"{httpContext.Request.Scheme}://{httpContext.Request.Host}{httpContext.Request.Path}", httpContext.Response.Headers["Location"].ToString());
+            httpContext.Response.StatusCode.Should().Be(201);
+            httpContext.Response.Headers["Location"].ToString().Should().Be($"{httpContext.Request.Scheme}://{httpContext.Request.Host}{httpContext.Request.Path}");
             resourceRepositoryMock.Verify
             (
                 v =>
@@ -70,7 +71,7 @@ namespace Pyrite.Content.HttpMethodStrategies.UnitTest
             await postHttpMethodStrategy.ExecuteAsync(httpContext);
 
             //assert
-            Assert.AreEqual(409, httpContext.Response.StatusCode);
+            httpContext.Response.StatusCode.Should().Be(409);
             resourceRepositoryMock.Verify
             (
                 v =>

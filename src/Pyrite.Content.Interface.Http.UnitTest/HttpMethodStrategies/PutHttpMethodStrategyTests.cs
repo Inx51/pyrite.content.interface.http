@@ -1,3 +1,4 @@
+using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -37,7 +38,7 @@ namespace Pyrite.Content.HttpMethodStrategies.UnitTest
             await putHttpMethodStrategy.ExecuteAsync(httpContext);
 
             //assert
-            Assert.AreEqual(204, httpContext.Response.StatusCode);
+            httpContext.Response.StatusCode.Should().Be(204);
             resourceRepositoryMock.Verify
             (
                 v =>
@@ -75,8 +76,8 @@ namespace Pyrite.Content.HttpMethodStrategies.UnitTest
             await putHttpMethodStrategy.ExecuteAsync(httpContext);
 
             //assert
-            Assert.AreEqual(201, httpContext.Response.StatusCode);
-            Assert.AreEqual($"{httpContext.Request.Scheme}://{httpContext.Request.Host}{httpContext.Request.Path}", httpContext.Response.Headers["Location"].ToString());
+            httpContext.Response.StatusCode.Should().Be(201);
+            httpContext.Response.Headers["Location"].ToString().Should().Be($"{httpContext.Request.Scheme}://{httpContext.Request.Host}{httpContext.Request.Path}");
             //Lets make sure that we don't accidentally remove the resource..
             resourceRepositoryMock.Verify
             (

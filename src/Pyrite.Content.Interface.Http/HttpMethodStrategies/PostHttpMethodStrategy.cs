@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Pyrite.Content.Abstractions.Interfaces.Repositories;
 using Pyrite.Content.Core;
+using Pyrite.Content.Interface.Http.Constants;
 using Pyrite.Content.Interface.Http.Interfaces;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Pyrite.Content.Interface.Http.HttpMethodStrategies
@@ -23,12 +25,18 @@ namespace Pyrite.Content.Interface.Http.HttpMethodStrategies
                 return;
             }
 
+            var headers = httpContext.Request.Headers.Where
+            (
+                header =>
+                !HttpHeaders.RequestHeaders.Contains(header.Key)
+            );
+
             await this._resourceRepository.CreateAsync
             (
                 new Resource
                 (
                     httpContext.Request.Path,
-                    httpContext.Request.Headers,
+                    headers,
                     httpContext.Request.Body
                 )
             );

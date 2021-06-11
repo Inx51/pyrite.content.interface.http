@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pyrite.Content.Interface.Ht
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pyrite.Content.Interface.Http.Extensions.DependencyInjection", "Pyrite.Content.Interface.Http.Extensions.DependencyInjection\Pyrite.Content.Interface.Http.Extensions.DependencyInjection.csproj", "{B233803E-E714-4D8B-8CD0-F4A83BC72D2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyrite.Content.Interface.Http.Test", "Pyrite.Content.Interface.Http.Test\Pyrite.Content.Interface.Http.Test.csproj", "{F57CEC9A-F7C7-4592-85C8-7CCA37EBC6DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pyrite.Content.Interface.Http.Test", "Pyrite.Content.Interface.Http.Test\Pyrite.Content.Interface.Http.Test.csproj", "{F57CEC9A-F7C7-4592-85C8-7CCA37EBC6DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pyrite.Content.Interface.Http.Sample", "Pyrite.Content.Interface.Http.Sample\Pyrite.Content.Interface.Http.Sample.csproj", "{4F0726C2-80EF-449C-BF23-B4AE5C817126}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyrite.Content.Interface.Http.AcceptanceTest", "Pyrite.Content.Interface.Http.AcceptanceTest\Pyrite.Content.Interface.Http.AcceptanceTest.csproj", "{7314E861-3A73-47B0-8749-9496941E5741}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +39,14 @@ Global
 		{F57CEC9A-F7C7-4592-85C8-7CCA37EBC6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F57CEC9A-F7C7-4592-85C8-7CCA37EBC6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F57CEC9A-F7C7-4592-85C8-7CCA37EBC6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F0726C2-80EF-449C-BF23-B4AE5C817126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F0726C2-80EF-449C-BF23-B4AE5C817126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F0726C2-80EF-449C-BF23-B4AE5C817126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F0726C2-80EF-449C-BF23-B4AE5C817126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7314E861-3A73-47B0-8749-9496941E5741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7314E861-3A73-47B0-8749-9496941E5741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7314E861-3A73-47B0-8749-9496941E5741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7314E861-3A73-47B0-8749-9496941E5741}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +54,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B198ABA2-CF6E-4449-B58E-C4EB4B8E5C7A} = {9AE4E017-D216-4373-8086-AFD7411DEE7A}
 		{F57CEC9A-F7C7-4592-85C8-7CCA37EBC6DD} = {9AE4E017-D216-4373-8086-AFD7411DEE7A}
+		{7314E861-3A73-47B0-8749-9496941E5741} = {9AE4E017-D216-4373-8086-AFD7411DEE7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B2CEAD2-9B8D-42D3-83DD-5D58F27930E0}

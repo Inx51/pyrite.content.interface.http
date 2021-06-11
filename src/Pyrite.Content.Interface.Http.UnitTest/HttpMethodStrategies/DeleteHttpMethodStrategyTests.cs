@@ -1,3 +1,4 @@
+using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -30,7 +31,7 @@ namespace Pyrite.Content.HttpMethodStrategies.UnitTest
             await deleteHttpMethodStrategy.ExecuteAsync(httpContext);
 
             //assert
-            Assert.AreEqual(204, httpContext.Response.StatusCode);
+            httpContext.Response.StatusCode.Should().Be(204);
             resourceRepositoryMock.Verify
             (
                 v =>
@@ -61,7 +62,7 @@ namespace Pyrite.Content.HttpMethodStrategies.UnitTest
             await deleteHttpMethodStrategy.ExecuteAsync(httpContext);
 
             //assert
-            Assert.AreEqual(404, httpContext.Response.StatusCode);
+            httpContext.Response.StatusCode.Should().Be(404);
             resourceRepositoryMock.Verify
             (
                 v =>
