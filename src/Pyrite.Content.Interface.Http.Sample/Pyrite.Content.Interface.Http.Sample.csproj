@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Pyrite.Content.Interface.Http.Builder\Pyrite.Content.Interface.Http.Builder.csproj" />
     <ProjectReference Include="..\Pyrite.Content.Interface.Http.Extensions.DependencyInjection\Pyrite.Content.Interface.Http.Extensions.DependencyInjection.csproj" />
   </ItemGroup>
 

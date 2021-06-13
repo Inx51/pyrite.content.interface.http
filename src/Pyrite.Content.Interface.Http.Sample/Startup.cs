@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pyrite.Content.Interface.Http.Builder;
 using Pyrite.Content.Interface.Http.Extensions.DependencyInjection;
 using Pyrite.Content.Repository.Memory.Extensions.DependencyInjection;
 

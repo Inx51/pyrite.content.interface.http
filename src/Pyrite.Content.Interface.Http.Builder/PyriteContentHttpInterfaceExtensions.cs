@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace Pyrite.Content.Interface.Http.Extensions.DependencyInjection
+namespace Pyrite.Content.Interface.Http.Builder
 {
-    public static class IApplicationBuilderExtensions
+    public static class PyriteContentHttpInterfaceExtensions
     {
         /// <summary>
         /// Uses the Pyrite Content HTTP interface.

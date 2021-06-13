@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pyrite.Content.Interface.Ht
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pyrite.Content.Interface.Http.Sample", "Pyrite.Content.Interface.Http.Sample\Pyrite.Content.Interface.Http.Sample.csproj", "{4F0726C2-80EF-449C-BF23-B4AE5C817126}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyrite.Content.Interface.Http.AcceptanceTest", "Pyrite.Content.Interface.Http.AcceptanceTest\Pyrite.Content.Interface.Http.AcceptanceTest.csproj", "{7314E861-3A73-47B0-8749-9496941E5741}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pyrite.Content.Interface.Http.AcceptanceTest", "Pyrite.Content.Interface.Http.AcceptanceTest\Pyrite.Content.Interface.Http.AcceptanceTest.csproj", "{7314E861-3A73-47B0-8749-9496941E5741}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyrite.Content.Interface.Http.Builder", "Pyrite.Content.Interface.Http.Builder\Pyrite.Content.Interface.Http.Builder.csproj", "{53F2E33B-6BBB-4BB4-B317-67F76D349C2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{7314E861-3A73-47B0-8749-9496941E5741}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7314E861-3A73-47B0-8749-9496941E5741}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7314E861-3A73-47B0-8749-9496941E5741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53F2E33B-6BBB-4BB4-B317-67F76D349C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F2E33B-6BBB-4BB4-B317-67F76D349C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F2E33B-6BBB-4BB4-B317-67F76D349C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F2E33B-6BBB-4BB4-B317-67F76D349C2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
