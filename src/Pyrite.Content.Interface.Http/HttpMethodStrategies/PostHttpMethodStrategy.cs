@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Pyrite.Content.Abstractions.Interfaces.Repositories;
-using Pyrite.Content.Core;
+using Pyrite.Content.Domain;
 using Pyrite.Content.Interface.Http.Constants;
 using Pyrite.Content.Interface.Http.Interfaces;
 using System.Linq;

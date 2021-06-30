@@ -4,7 +4,7 @@ using Microsoft.Extensions.Primitives;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Pyrite.Content.Abstractions.Interfaces.Repositories;
-using Pyrite.Content.Core;
+using Pyrite.Content.Domain;
 using Pyrite.Content.Interface.Http.HttpMethodStrategies;
 using Pyrite.Content.Interface.Http.Test.Constants;
 using System.Collections.Generic;
